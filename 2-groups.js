@@ -7,7 +7,7 @@ Give the class a static from method that takes an iterable object as argument an
 */
 
 class Group {
-    // Your code here.
+  
   }
   
 
