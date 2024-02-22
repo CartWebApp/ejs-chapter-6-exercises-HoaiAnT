@@ -7,8 +7,31 @@ Give the class a static from method that takes an iterable object as argument an
 */
 
 class Group {
-  
+  constructor(){
+    this.group = [];
   }
+  has(numbers) {
+    return this.group.includes(numbers);
+  }
+  add(numbers) {
+    if (!this.group.includes(numbers)) {
+      this.group.push(numbers);
+    }
+  }
+  delete(numbers) {
+    let items = this.group.indexOf(numbers);
+    if (items !== -1) {
+      this.group.splice(items, 1);
+    }
+  }
+  static from(a) {
+    let b = new Group();
+    for (let numbers of a) {
+      b.add(numbers);
+    }
+    return b;
+  }
+}
   
 
   // Tests:
