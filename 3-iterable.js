@@ -8,48 +8,30 @@ It is okay if your iterator behaves strangely when the group is modified during 
 
 // Your code here (and the code from the previous exercise)
 class Group {
-  constructor(){
-    this.group = [];
+  constructor(members) {
+    this.members = members;
   }
-  has(numbers) {
-    return this.group.includes(numbers);
+
+  static from(members) {
+    return new Group(members);
   }
-  add(numbers) {
-    if (!this.group.includes(numbers)) {
-      this.group.push(numbers);
-    }
-  }
-  delete(numbers) {
-    let items = this.group.indexOf(numbers);
-    if (items !== -1) {
-      this.group.splice(items, 1);
-    }
-  }
-  static from(a) {
-    let b = new Group();
-    for (let numbers of a) {
-      b.add(numbers);
-    }
-    return b;
-  }
+
   [Symbol.iterator]() {
     return new GroupIterator(this);
-  };
+  }
 }
-  
 
 class GroupIterator {
-  constructor(o) {
-    this.i = 0;
-    this.group = o.group;
+  constructor(alphabet) {
+    this.alphabet = alphabet;
+    this.position = 0;
   }
 
   next() {
-    if (this.i == this.group.length || this.i > 10) return {done: true};
-
-    let value = this.group[this.i];
-    this.i++;
-    return {value, done: false};
+    if (this.position >= this.alphabet.members.length) {
+      return { done: true };
+    }
+    return { value: this.alphabet.members[this.position++], done: false };
   }
 }
 

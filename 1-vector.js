@@ -11,7 +11,7 @@ class Vec{
         return new Vec(this.x - n.x, this.y - n.y)
     }
     get length(){
-        return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2))
+        return Math.sqrt((this.x * this.x) + (this.y * this.y));
     }
 }
 // Give the Vec prototype two methods, plus and minus, that take another vector as a parameter and return a new vector that has the sum or difference of the two vectors’ (this and the parameter) x and y values.
